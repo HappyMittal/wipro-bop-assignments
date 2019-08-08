@@ -1,0 +1,137 @@
+<html>
+<head>
+<script>
+function playPause()
+{
+	var myVideo=document.getElementById("video")
+	if (myVideo.paused)
+	{
+		myVideo.play()
+	}
+	else
+		myVideo.pause()
+}
+function validateDetails(firstName,lastName)
+{
+	if(!/[^a-zA-Z]/.test(firstName) && !/[^a-zA-Z]/.test(lastName))
+		return true
+	else
+		return false
+}
+function printDetails()
+{
+	var firstName = document.getElementById("first").value
+	var lastName = document.getElementById("last").value
+	var email= document.getElementById("email").value
+	var age= document.getElementById("age").value
+	var city= document.getElementById("city").value
+	var choice= document.getElementById("choice").value
+	if(validateDetails(firstName,lastName))
+		{window.alert("Details:\n"+
+		firstName+" "+lastName+"\n"+
+		email+" \n"+age+"\n"+
+		choice+" \n"+city)}
+	else
+		window.alert("Enter valid details!")
+	
+	
+}
+function updateTime()
+			{
+				date= new Date()
+				return date
+				
+		
+			}
+ID=window.setTimeout("displayTime();",1000)
+function displayTime()
+			{
+			document.getElementById("time").innerHTML=updateTime()
+			ID=window.setTimeout("displayTime();",1000)
+			}
+</script>
+<style>
+	.title {
+		text-align: center;
+		color: #33c;
+	}
+	.time {
+		background-color: #ccc;
+		color: #33c;
+		text-align: right;
+	}
+	.navigationbar {
+		font-family: Arial;
+		border: solid blue;
+		padding: 20px;
+		text-align: center;
+	}
+	.navigationbar a.active {
+		background-color: #00f;
+		color: #fff;
+		text-decoration: none;
+	}
+	.navigationbar a.link {
+		text-decoration: none;
+	}
+	.vid {
+		text-align: center;
+	}
+	.vid div.vide {
+		border: 4px solid blue;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<h1 class="title" id="Title"> Amazing Video Library </h1>
+	<p class="time" id="time"></p>
+	<div class="navigationbar" id="navigationbar">
+	<b>
+		<a class="active" href="">
+			Home
+		</a> &nbsp;&nbsp;&nbsp; 
+		<a class="link" href="about.html">
+			About Us
+		</a> &nbsp;&nbsp;&nbsp;
+		<a class="link" href="careers.html">
+			Careers
+		</a>
+	</b>
+	</div><BR>
+	<p><span><h3>Here is the video of the week </h3></span></p>
+	<div class="vid">
+		<div class="vide">
+			<video width="500" height="500" id="video" >
+			<source src="video.mp4" type="video/mp4"></video>
+		</div>
+		<button onClick="playPause()"> Play/Pause </button>
+	</div>
+	<center>
+	<div id="section2">
+		<p id="submission"> Submit your choice for the video of the week </p>
+		<form>
+		<input type="text" id="first" placeholder="First Name">
+		<input type= "text" id="last" placeholder="Last Name"> <BR>
+		<input type="email" placeholder="Email" id="email"> <BR>
+		<p> City </p>
+		<input type="text" list="cities" id="city"">
+		<datalist id="cities">
+			<option value="Delhi"></option>
+			<option value="Bangalore"></option>
+			<option value="Chennai"> </option>
+			<option value="Kolkata"></option>
+			<option value="Hyderbad"></option>
+		</datalist>
+		<p> Age </p>
+		<input type="number" id="age" min=18 max=120> <BR>
+		<p> Video choice for next week </p>
+		<input type="text" id="choice">
+		<input type="button" value="submit" onClick="printDetails();">
+	</center>
+		
+		
+	</form>
+	
+</body>	
+</html>
